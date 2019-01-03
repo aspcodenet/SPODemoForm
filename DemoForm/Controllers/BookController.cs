@@ -12,14 +12,28 @@ namespace DemoForm.Controllers
         public ActionResult AddNew()
         {
             var model = new ViewModels.BookViewModel();
-            model.Language = "Svenska";
+            //model.LanguageCode = "DK";
+            SetupAvailableLanguages(model);
             return View(model);
+        }
+
+        void SetupAvailableLanguages(ViewModels.BookViewModel model)
+        {
+            model.AvailableLanguages = new List<SelectListItem>
+            {
+                new SelectListItem{ Value=null, Text="..välj ett språk.."  },
+                new SelectListItem{ Value="SE", Text="Svenska"  },
+                new SelectListItem{ Value="FI", Text="Finska"  },
+                new SelectListItem{ Value="DK", Text="Danska"  },
+            };
         }
 
         [HttpPost]
         public ActionResult AddNew(ViewModels.BookViewModel model)
         {
-            if(string.IsNullOrEmpty(model.Title))
+            SetupAvailableLanguages(model);
+
+            if (string.IsNullOrEmpty(model.Title))
             {
                 return View(model);
             }

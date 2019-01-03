@@ -7,6 +7,7 @@
 {
     <text>Title</text>
     @Html.TextBoxFor(m => m.Title)
+    @Html.ValidationMessageFor(m => m.Title)
     <br />
     <text>Author</text>
     @Html.TextBoxFor(m => m.Author)
@@ -22,12 +23,13 @@
 
     <br />
     <text>Lanmguage</text>
-    @Html.TextBoxFor(m => m.Language)
+    @Html.DropDownListFor(m => m.LanguageCode, Model.AvailableLanguages)
+    @Html.ValidationMessageFor(m => m.LanguageCode)
 
     <input type="submit" value="Spara" />
 }
 
-@if(Model.IsSaved)
+@if (Model.IsSaved)
 {
     <h2>Tack för din medverkan! Uppgifterna ovan har registrerats, skicka in igen om det blev fel</h2>
 }
