@@ -1,0 +1,38 @@
+﻿@model DemoForm.ViewModels.BookViewModel
+@{
+    ViewBag.Title = "Book";
+}
+
+@using (Html.BeginForm("AddNew", "Book", FormMethod.Post))
+{
+    <text>Title</text>
+    @Html.TextBoxFor(m => m.Title)
+    <br />
+    <text>Author</text>
+    @Html.TextBoxFor(m => m.Author)
+
+    <br />
+    <text>Year</text>
+
+    @Html.TextBoxFor(m => m.PublishedYear)
+
+    <br />
+    <text>Pubklisgher</text>
+    @Html.TextBoxFor(m => m.Publisher)
+
+    <br />
+    <text>Lanmguage</text>
+    @Html.TextBoxFor(m => m.Language)
+
+    <input type="submit" value="Spara" />
+}
+
+@if(Model.IsSaved)
+{
+    <h2>Tack för din medverkan! Uppgifterna ovan har registrerats, skicka in igen om det blev fel</h2>
+}
+
+
+
+
+
